@@ -26,9 +26,10 @@ function loadHeadphonesArtists() {
         success: function (result) {
             $.each(result, function(i, item) {
                 var artist = $('<a>').attr('href',WEBDIR + 'headphones/artist/' + item.ArtistID).text(item.ArtistName);
+                var thumb = $('<img style="  float: left;  min-height: 100%;  min-width: 100%;  max-width: 300px;  max-height: 300px;  position: relative;">').attr('src',item.ThumbURL);
                 var album = $('<a>').attr('href',WEBDIR + 'headphones/album/' + item.AlbumID).text((item.LatestAlbum) + ' (' + (item.ReleaseDate) + ')');
                 var row = $('<tr>');
-                row.append($('<td>').html(thumb));
+                row.append($('<td style="float: left; height: 50px; overflow: hidden; width: 50px; ">').html(thumb));
                 row.append($('<td>').html(artist));
                 row.append($('<td>').html(album));
                 row.append($('<td>').text((item.HaveTracks) + '/' + (item.TotalTracks)));
